@@ -2,6 +2,7 @@
 using BookStore_MVCApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Channels;
 
 namespace BookStore_MVCApp.Controllers
 {
@@ -41,7 +42,10 @@ namespace BookStore_MVCApp.Controllers
         public async Task<IActionResult> AddBook(Book book)
         {
 
-            appDBcontext.Add(book);
+            // add the book to the context
+            appDBcontext.Add(book); 
+
+            //send to the DB the changes done in the DBContext
             await appDBcontext.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
 
@@ -53,12 +57,16 @@ namespace BookStore_MVCApp.Controllers
         // GET: Books/Delete/XX
         public async Task<IActionResult> Delete(int? id)
         {
+            //check if the book id is not null 
             if (id == null)
             {
                 return NotFound();
             }
+
+            //find a book that has the ID "id"
             var book = await appDBcontext.Books.FirstOrDefaultAsync(bookIterator => bookIterator.Id == id);
 
+            //check if a book has beeen found
             if (book == null)
             {
                 return NotFound();
@@ -72,11 +80,14 @@ namespace BookStore_MVCApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            //find a book that has the ID "id"
             var book = await appDBcontext.Books.FindAsync(id);
 
             if (book != null)
             {
+                //remove the book from the DBContext
                 appDBcontext.Books.Remove(book);
+                //Apply the changes made in the DbContext to the database
                 await appDBcontext.SaveChangesAsync();
             }
 
@@ -119,7 +130,10 @@ namespace BookStore_MVCApp.Controllers
             {
                 try
                 {
+                    //make the changes in the DBContext 
                     appDBcontext.Update(book);
+                    
+                    //apply the changes made in the DbContext to the database
                     await appDBcontext.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
                 }
