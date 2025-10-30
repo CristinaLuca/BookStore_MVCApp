@@ -1,0 +1,28 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model Book
+<h1>Create Book</h1>
+
+<form asp-action="AddBook" method="post">
+    <div class="form-group">
+        <label> Title</label>
+        <input asp-for="Title" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label> Author </label>
+        <input asp-for="Author" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label> Price </label>
+        <input asp-for="Price" class="form-control" />
+    </div>
+    <input type="submit" value="Create" class="btn btn-primary" />
+</form>
+
+
+<a href="/Books">Back to List</a>
+

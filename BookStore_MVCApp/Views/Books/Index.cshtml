@@ -9,7 +9,9 @@
 <ul>
     @foreach (var book in Model)
     {
-        <li>@book.Title by @book.Author - $@book.Price</li>
+        <li>@book.Title by @book.Author - £@book.Price</li>
+        <a asp-action="Delete" asp-route-id="@book.Id">Delete</a>
+        <a asp-action="Edit" asp-route-id="@book.Id">Edit</a>
     }
 </ul
 
