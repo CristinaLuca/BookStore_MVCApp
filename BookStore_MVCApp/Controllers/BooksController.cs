@@ -1,5 +1,6 @@
 ﻿using BookStore_MVCApp.Data;
 using BookStore_MVCApp.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Channels;
@@ -18,6 +19,7 @@ namespace BookStore_MVCApp.Controllers
         }
 
         //get all books from the database and display them
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             //get the list from the DB asynchronously (it doesn’t block the server while waiting for the database)
@@ -98,6 +100,7 @@ namespace BookStore_MVCApp.Controllers
  * UPDATE
  */
         // GET: Books/Edit/XX
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -121,6 +124,7 @@ namespace BookStore_MVCApp.Controllers
         // POST: Books/Edit/XX
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, Book book)
         {
             if (id != book.Id)
