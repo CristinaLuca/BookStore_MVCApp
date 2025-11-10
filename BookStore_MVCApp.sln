@@ -1,9 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36414.22 d17.14
+VisualStudioVersion = 17.14.36414.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStore_MVCApp", "BookStore_MVCApp\BookStore_MVCApp.csproj", "{A30C1E91-1A16-4F2B-8514-0118BD05EDD7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStoreTests", "BookStoreTests\BookStoreTests.csproj", "{ACBBA6FA-F504-4E24-9DB5-0BB2D43DA8F0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A30C1E91-1A16-4F2B-8514-0118BD05EDD7} = {A30C1E91-1A16-4F2B-8514-0118BD05EDD7}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +20,10 @@ Global
 		{A30C1E91-1A16-4F2B-8514-0118BD05EDD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A30C1E91-1A16-4F2B-8514-0118BD05EDD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A30C1E91-1A16-4F2B-8514-0118BD05EDD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACBBA6FA-F504-4E24-9DB5-0BB2D43DA8F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACBBA6FA-F504-4E24-9DB5-0BB2D43DA8F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACBBA6FA-F504-4E24-9DB5-0BB2D43DA8F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACBBA6FA-F504-4E24-9DB5-0BB2D43DA8F0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
